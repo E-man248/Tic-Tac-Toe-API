@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API.csproj": {}
+    "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\TicTacToeAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API.csproj": {
+    "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\TicTacToeAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API.csproj",
-        "projectName": "Tic-Tac-Toe-API",
-        "projectPath": "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API.csproj",
+        "projectUniqueName": "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\TicTacToeAPI.csproj",
+        "projectName": "TicTacToeAPI",
+        "projectPath": "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\TicTacToeAPI.csproj",
         "packagesPath": "C:\\Users\\Eman2\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\obj\\",
         "projectStyle": "PackageReference",
