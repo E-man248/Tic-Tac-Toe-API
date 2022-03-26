@@ -13,10 +13,6 @@ namespace TicTacToeAPI.Models
             The current status of the game. This can be any of the following values:
             <list>
                 <item>
-                    <term>-1 | Not Started</term>
-                    <description>This indicates the game has yet to begin.</description>
-                </item>
-                <item>
                     <term> 0 | In Progress</term>
                     <description>This indicates the game has started, but
                     a winner has yet to be decided.</description>
