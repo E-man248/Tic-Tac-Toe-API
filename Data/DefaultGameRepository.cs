@@ -7,7 +7,7 @@ namespace TicTacToeAPI.Data
         is primarily used for testing functionality of the repository with safe
         values. This class is not intended for full product implementation.
     </summary> **/
-    public class DefaultGameRepository : GameRepositoryInterface
+    public class DefaultGameRepository : IGameRepository
     {
         public Game PostNewGame()
         {

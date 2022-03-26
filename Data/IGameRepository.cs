@@ -7,7 +7,7 @@ namespace TicTacToeAPI.Data
         a Game Repository so that classes implementing this interface are
         implement these methods.
     </summary> **/
-    public interface GameRepositoryInterface
+    public interface IGameRepository
     {
         /** <summary>
             This method creates a game and saves that game to the repository.
