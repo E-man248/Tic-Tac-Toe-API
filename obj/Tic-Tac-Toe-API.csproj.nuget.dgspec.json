@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API.csproj",
+        "projectName": "Tic-Tac-Toe-API",
+        "projectPath": "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API.csproj",
+        "packagesPath": "C:\\Users\\Eman2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Eman2\\OneDrive\\Desktop\\Coding\\Projects\\Tic-Tac-Toe-API\\Tic-Tac-Toe-API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Eman2\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
