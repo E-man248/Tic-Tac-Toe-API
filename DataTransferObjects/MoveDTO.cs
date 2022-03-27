@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace TicTacToeAPI.Models
 {
     /** <summary>
-        This model represents the moves that the Player it is referencing
-        makes and describes their decided move.
+        This class represents a Data Transfer Object for the
+        Move object model. This Data Transfer Object enforces that
+        only relevant data to the client will be returned when making
+        transactions with the database.
     </summary> **/
     public class MoveDTO
     {
