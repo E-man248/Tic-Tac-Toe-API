@@ -12,7 +12,7 @@ namespace TicTacToeAPI.Data
         public Game PostNewGame()
         {
             int[] defaultIDs = {0, 1};
-            return new Game{gameID = 0, status = 0, playerIDs = defaultIDs };
+            return new Game{gameID = 0, status = 0, player1ID = defaultIDs[0], player2ID = defaultIDs[1] };
         }
     }
 }
