@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TicTacToeAPI.Models
 {
     /** <summary>
@@ -7,6 +9,7 @@ namespace TicTacToeAPI.Models
     public class Game
     {
         /// <summary> Unique player ID. </summary>
+        [Key]
         public int gameID { get; set; }
 
         /** <summary>
@@ -29,11 +32,21 @@ namespace TicTacToeAPI.Models
                 </item>
             </list>
         </summary> **/
+        [Required]
         public int status { get; set; }
 
         /** <summary>
-            The two unique player IDs of the players involved in a game.
+            The unique player ID of the player assigned Player 1 in the game.
         </summary> **/
-        public int[] playerIDs = new int[2];
+        
+        [Required]
+        public int player1ID { get; set; }
+
+        /** <summary>
+            The unique player ID of the player assigned Player 2 in the game.
+        </summary> **/
+
+        [Required]
+        public int player2ID { get; set; }
     }
 }
