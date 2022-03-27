@@ -33,7 +33,7 @@ namespace Tic_Tac_Toe_API.Migrations
 
                     b.HasKey("gameID");
 
-                    b.ToTable("Games");
+                    b.ToTable("Games", (string)null);
                 });
 
             modelBuilder.Entity("TicTacToeAPI.Models.Move", b =>
@@ -53,7 +53,7 @@ namespace Tic_Tac_Toe_API.Migrations
 
                     b.HasIndex("PlayerID");
 
-                    b.ToTable("Moves");
+                    b.ToTable("Moves", (string)null);
                 });
 
             modelBuilder.Entity("TicTacToeAPI.Models.Player", b =>
@@ -72,7 +72,7 @@ namespace Tic_Tac_Toe_API.Migrations
 
                     b.HasKey("playerID");
 
-                    b.ToTable("Players");
+                    b.ToTable("Players", (string)null);
                 });
 
             modelBuilder.Entity("TicTacToeAPI.Models.Move", b =>
