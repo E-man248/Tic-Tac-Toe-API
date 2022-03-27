@@ -1,5 +1,7 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TicTacToeAPI.Data;
+using TicTacToeAPI.DataTransferObjects;
 using TicTacToeAPI.Models;
 
 namespace TicTacToeAPI.Controllers
@@ -13,17 +15,25 @@ namespace TicTacToeAPI.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
-        private readonly IGameRepository active;
-        public GameController(IGameRepository repository)
+        private readonly IGameRepository activeGameRepository;
+        private readonly IMapper activeMapper;
+
+        public GameController(IGameRepository repository, IMapper mapper)
         {
-            active = repository;
+            activeGameRepository = repository;
+            activeMapper = mapper;
         }
 
         // POST api/game
         [HttpPost]
-        public ActionResult<Game> PostNewGame()
+        public ActionResult<GameDTO> PostNewGame()
         {
-            return Ok(active.PostNewGame());
+            var newGame = activeGameRepository.PostNewGame();
+            if (newGame != null)
+            {
+                return Ok(activeMapper.Map<GameDTO>(newGame));
+            }
+            else return NotFound();
         }
     }
 }

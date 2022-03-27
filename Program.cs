@@ -14,7 +14,13 @@ builder.Services.AddSwaggerGen();
 // Custom Services:
 
 /*  
- *  This scope allows for manipulation of the Game Repository used without
+ *  These scope allows automatic mapping to Data Transfer Objects
+ *  to their respective models.
+*/
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+/*  
+ *  These scopes allow manipulation of the Game Repository used without
  *  needing to change the lower implementation of the code. This allows
  *  more flexibility and changeability in the API.
 */
