@@ -13,17 +13,17 @@ namespace TicTacToeAPI.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
-        private readonly IGameRepository currentRepository;
+        private readonly IGameRepository active;
         public GameController(IGameRepository repository)
         {
-            currentRepository = repository;
+            active = repository;
         }
 
         // POST api/game
         [HttpPost]
         public ActionResult<Game> PostNewGame()
         {
-            return Ok(currentRepository.PostNewGame());
+            return Ok(active.PostNewGame());
         }
     }
 }

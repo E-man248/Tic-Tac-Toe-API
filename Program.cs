@@ -18,7 +18,8 @@ builder.Services.AddSwaggerGen();
  *  needing to change the lower implementation of the code. This allows
  *  more flexibility and changeability in the API.
 */
-builder.Services.AddScoped<IGameRepository, DefaultGameRepository>();
+builder.Services.AddScoped<GameDatabaseContext, GameDatabaseContext>();
+builder.Services.AddScoped<IGameRepository, SQLiteGameRepository>();
 
 var app = builder.Build();
 
