@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions;
 using TicTacToeAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IGameRepository, DefaultGameRepository>();
 
 var app = builder.Build();
+
+/*  
+ *  This configuration sets up the sqlite database connection with the project
+*/
+IConfiguration Configuration = app.Configuration;
+IWebHostEnvironment environment = app.Environment;
+
+builder.Services.AddEntityFrameworkSqlite().AddDbContext<GameDatabaseContext>(options =>
+options.UseSqlite(Configuration.GetConnectionString("TicTacToeDBConnection")));
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
