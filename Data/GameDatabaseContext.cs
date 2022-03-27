@@ -15,8 +15,8 @@ namespace TicTacToeAPI.Data
             options.UseSqlite("Filename=GameDatabase.db");
         }
 
-        public DbSet<Game> games { get; set; }
-        
-        public DbSet<Player> players { get; set; }
+        public DbSet<Game> game { get; set; }
+        public DbSet<Player> player { get; set; }
+        public DbSet<Move> move { get; set; }
     }
 }

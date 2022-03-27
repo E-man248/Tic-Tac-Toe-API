@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace TicTacToeAPI.Models
 {
     /** <summary>
@@ -10,14 +13,17 @@ namespace TicTacToeAPI.Models
             Player ID Foreign Key. This is the ID of the player
             that made the move.
         </summary> **/
-        public int playerID { get; set; }
+        [ForeignKey("PlayerID")]
+        public Player Player { get; set; }
         
         /// <summary> Game ID Foreign Key. </summary>
-        public int gameID { get; set; }
+        [ForeignKey("GameID")]
+        public Game Game { get; set; }
 
         /** <summary>
             Move Position on the Tic-Tac-Toe Grid. Ex: A1
         </summary> **/
+        [Key]
         public string movePosition { get; set; } = "";
     }
 }
