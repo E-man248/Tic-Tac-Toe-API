@@ -16,5 +16,7 @@ namespace TicTacToeAPI.Data
         }
 
         public DbSet<Game> games { get; set; }
+        
+        public DbSet<Player> players { get; set; }
     }
 }
