@@ -14,6 +14,7 @@ namespace TicTacToeAPI.Models
         /** <summary>
             Move Position on the Tic-Tac-Toe Grid. Ex: A1
         </summary> **/
+        [Key]
         public string movePosition { get; set; } = "";
 
         /** <summary>

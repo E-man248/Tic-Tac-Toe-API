@@ -10,13 +10,18 @@ namespace TicTacToeAPI.Data
     </summary> **/
     public class GameDatabaseContext : DbContext
     {
+        public GameDatabaseContext(DbContextOptions<GameDatabaseContext> options) : base(options)
+        {
+
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlite("Filename=GameDatabase.db");
         }
 
-        public DbSet<Game> Games { get; set; }
-        public DbSet<Player> Players { get; set; }
-        public DbSet<Move> Moves { get; set; }
+        public DbSet<Game>? Games { get; set; }
+        public DbSet<Player>? Players { get; set; }
+        public DbSet<Move>? Moves { get; set; }
     }
 }
