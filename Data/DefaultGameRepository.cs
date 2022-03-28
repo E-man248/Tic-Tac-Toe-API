@@ -10,6 +10,12 @@ namespace TicTacToeAPI.Data
     public class DefaultGameRepository : IGameRepository
     {
         /** <summary> Inherited from Interface IGameRepository </summary> **/
+        public List<Move> GetAllMoves(int gameID)
+        {
+            throw new NotImplementedException();
+        }
+
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
         public Game? GetGame(int gameID)
         {
             throw new NotImplementedException();
@@ -29,7 +35,7 @@ namespace TicTacToeAPI.Data
         }
 
         /** <summary> Inherited from Interface IGameRepository </summary> **/
-        public int PostNewMove(int row, int column, Player player, Game game)
+        public int PostNewMove(int row, int column, Player player, Game game, List<Move> moves)
         {
             throw new NotImplementedException();
         }

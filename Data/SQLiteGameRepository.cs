@@ -46,38 +46,48 @@ namespace TicTacToeAPI.Data
         /** <summary> Inherited from Interface IGameRepository </summary> **/
         public Player? GetPlayer(int playerID)
         {
-            return activeDatabaseContext.Players.FirstOrDefault(player => player.playerID == playerID);
+            return activeDatabaseContext.Players.Find(playerID);
         }
 
         /** <summary> Inherited from Interface IGameRepository </summary> **/
         public Game? GetGame(int gameID)
         {
-            return activeDatabaseContext.Games.FirstOrDefault(game => game.gameID == gameID);
+            return activeDatabaseContext.Games.Find(gameID);
         }
 
         /** <summary> Inherited from Interface IGameRepository </summary> **/
-        public int PostNewMove(int row, int column, Player player, Game game)
+        public int PostNewMove(int row, int column, Player player, Game game, List<Move> moves)
         {
-            // Create players of the game and add them:
+            // Create Move and Attach Keys:
             Move newMove = new Move();
             newMove.row = row;
             newMove.column = column;
             newMove.Player = player;
             newMove.Game = game;
 
+            // Add Move to Database:
             activeDatabaseContext.Moves.Add(newMove);
             activeDatabaseContext.SaveChanges();
 
+            int gameStatus = GameLogicTracker.UpdateGameStatus(game, moves);
+
+            // Update the Game the Move took place in:
             activeDatabaseContext.Games.Update(game);
             activeDatabaseContext.SaveChanges();
 
-            return 0;
+            return gameStatus;
         }
 
         /** <summary> Inherited from Interface IGameRepository </summary> **/
         public bool SaveDBChanges()
         {
             return activeDatabaseContext.SaveChanges() >= 0;
+        }
+
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
+        public List<Move> GetAllMoves(int gameID)
+        {
+            return activeDatabaseContext.Moves.Where(move => move.Game.gameID == gameID).ToList();
         }
     }
 }

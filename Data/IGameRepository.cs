@@ -25,7 +25,7 @@ namespace TicTacToeAPI.Data
         /**<returns>
             Status code of the game after the move has been made.
         </returns>**/
-        int PostNewMove(int row, int column, Player player, Game game);
+        int PostNewMove(int row, int column, Player player, Game game, List<Move> moves);
 
         /** <summary>
             This method save any changes to the database.
@@ -35,11 +35,16 @@ namespace TicTacToeAPI.Data
         /** <summary>
             This method retrieves a player from the database.
         </summary>**/
-        public Player? GetPlayer(int playerID);
+        Player? GetPlayer(int playerID);
 
         /** <summary>
             This method retrieves a game from the database.
         </summary>**/
-        public Game? GetGame(int gameID);
+        Game? GetGame(int gameID);
+        
+        /** <summary>
+            This method retrieves all the moves that take place in a game from the database.
+        </summary>**/
+        List<Move> GetAllMoves(int gameID);
     }
 }
