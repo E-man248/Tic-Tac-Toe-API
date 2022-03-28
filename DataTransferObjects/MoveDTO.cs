@@ -12,15 +12,21 @@ namespace TicTacToeAPI.Models
     public class MoveDTO
     {
         /** <summary>
-            Row Position on the Tic-Tac-Toe Grid.
+            Unique ID of the move.
         </summary> **/
         [Key]
+        public int moveID { get; set; }
+
+        /** <summary>
+            Row Position on the Tic-Tac-Toe Grid.
+        </summary> **/
+        [Required]
         public int row { get; set; }
         
         /** <summary>
             Column Position on the Tic-Tac-Toe Grid.
         </summary> **/
-        [Key]
+        [Required]
         public int column { get; set; }
 
         /** <summary>

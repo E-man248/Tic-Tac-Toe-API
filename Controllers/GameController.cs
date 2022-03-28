@@ -1,5 +1,6 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 using TicTacToeAPI.Data;
 using TicTacToeAPI.DataTransferObjects;
 using TicTacToeAPI.Models;
@@ -56,16 +57,22 @@ namespace TicTacToeAPI.Controllers
         {
             // If the game the move is made on does not exits, throw an exception:
             Game game = activeGameRepository.GetGame(gameID);
-            if (activeGameRepository.GetGame(gameID) == null)
+            if (game == null)
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Game ID is INVALID!");
             }
 
             // If the player the move was made by does not exits, throw an exception:
             Player player = activeGameRepository.GetPlayer(playerID);
-            if (activeGameRepository.GetGame(playerID) == null)
+            if (player == null)
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Player ID is INVALID!");
+            }
+
+            // If the player is not registered for the game throw an exception:
+            if (player.playerID != game.player1ID && player.playerID != game.player2ID)
+            {
+                throw new ArgumentException("Player ID is INVALID!");
             }
 
             // Retrieve all moves from the selected game:
@@ -77,15 +84,66 @@ namespace TicTacToeAPI.Controllers
             {
                 if (move.row == row && move.column == column)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Move Position already taken!");
                 }
+            }
+
+            // If the row and/or column are out of bounds, throw an exception:
+            if (row < 0 || row >= 3 || column < 0 || column >= 3)
+            {
+                throw new ArgumentException("Move Position is INVALID!");
             }
 
             // Move can be safely created
             int gameStatus = activeGameRepository.PostNewMove(row, column, player, game, moves);
-            string uriResponse = "New Move at (" + row + "," + column + ")" + "registered for " + player.name + " in Game #" + game.gameID;
+            
+            var response = new
+            {
+                MoveInfo = "New Move at (" + row + "," + column + ")" + " registered for " + player.name + " in Game #" + game.gameID,
+                Board_Row0 = GameLogicTracker.printBoardRow0(game, moves),
+                Board_Row1 = GameLogicTracker.printBoardRow1(game, moves),
+                Board_Row2 = GameLogicTracker.printBoardRow2(game, moves),
+                GameStatus = gameStatus
+            };
 
-            return Created(uriResponse, gameStatus);
+            return Created("Move Created", response);
+        }
+
+        // Endpoint 4:
+        // GET api/game/{gameID}/move
+        [HttpGet("{gameID}/move")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<List<MoveDTO>> GetAllMoves(int gameID)
+        {
+            // If the game the move is made on does not exits, throw an exception:
+            Game game = activeGameRepository.GetGame(gameID);
+            if (activeGameRepository.GetGame(gameID) == null)
+            {
+                throw new ArgumentException("Game ID is INVALID!");
+            }
+
+            // Retrieve all moves from the selected game:
+            List<Move> moves = activeGameRepository.GetAllMoves(game.gameID);
+
+            return Ok(activeMapper.Map<List<MoveDTO>>(moves));
+        }
+
+        // Endpoint 5:
+        // GET api/game/player/{playerID}
+        [HttpGet("player/{playerID}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<PlayerDTO> GetPlayer(int playerID)
+        {
+            // If the game the move is made on does not exits, throw an exception:
+            Player player = activeGameRepository.GetPlayer(playerID);
+            if (activeGameRepository.GetPlayer(playerID) == null)
+            {
+                throw new ArgumentException("Player ID is INVALID!");
+            }
+
+            return Ok(activeMapper.Map<PlayerDTO>(player));
         }
     }
 }

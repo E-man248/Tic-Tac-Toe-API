@@ -10,15 +10,21 @@ namespace TicTacToeAPI.Models
     public class Move
     {
         /** <summary>
-            Row Position on the Tic-Tac-Toe Grid.
+            Unique ID of the move.
         </summary> **/
         [Key]
+        public int moveID { get; set; }
+
+        /** <summary>
+            Row Position on the Tic-Tac-Toe Grid.
+        </summary> **/
+        [Required]
         public int row { get; set; }
         
         /** <summary>
             Column Position on the Tic-Tac-Toe Grid.
         </summary> **/
-        [Key]
+        [Required]
         public int column { get; set; }
 
         /** <summary>
@@ -26,10 +32,12 @@ namespace TicTacToeAPI.Models
             that made the move.
         </summary> **/
         [ForeignKey("PlayerID")]
+        [Required]
         public Player Player { get; set; }
         
         /// <summary> Game ID Foreign Key. </summary>
         [ForeignKey("GameID")]
+        [Required]
         public Game Game { get; set; }
     }
 }

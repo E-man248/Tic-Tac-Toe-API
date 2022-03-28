@@ -37,6 +37,7 @@ namespace TicTacToeAPI.Data
             Game newGame = new Game();
             newGame.player1ID = newPlayer1.playerID;
             newGame.player2ID = newPlayer2.playerID;
+            newGame.status = 0;
             activeDatabaseContext.Games.Add(newGame);
             activeDatabaseContext.SaveChanges();
 
@@ -69,7 +70,8 @@ namespace TicTacToeAPI.Data
             activeDatabaseContext.Moves.Add(newMove);
             activeDatabaseContext.SaveChanges();
 
-            int gameStatus = GameLogicTracker.UpdateGameStatus(game, moves);
+            int gameStatus = GameLogicTracker.GetGameStatus(game, moves);
+            game.status = gameStatus;
 
             // Update the Game the Move took place in:
             activeDatabaseContext.Games.Update(game);
