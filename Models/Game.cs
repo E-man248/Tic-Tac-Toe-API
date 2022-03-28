@@ -30,6 +30,11 @@ namespace TicTacToeAPI.Models
                     <description>This indicates the game has been completed
                     and that it finished with player 2 declared the winner.</description>
                 </item>
+                <item>
+                    <term> 3 | Draw</term>
+                    <description>This indicates the game has been completed
+                    but there was no winner.</description>
+                </item>
             </list>
         </summary> **/
         [Required]
