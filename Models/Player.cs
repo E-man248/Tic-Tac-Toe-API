@@ -13,7 +13,7 @@ namespace TicTacToeAPI.Models
 
         /// <summary> Optional player name. </summary>
         [MaxLength(255)]
-        public string name { get; set; } = "Guest";
+        public string? name { get; set; } = "Guest";
 
         /** <summary>
             Assigned player letter icon. This will either 'X' or 'O' and

@@ -26,14 +26,11 @@ namespace TicTacToeAPI.Controllers
 
         // POST api/game
         [HttpPost]
-        public ActionResult<GameDTO> PostNewGame()
+        public ActionResult<GameDTO> PostNewGame(string? player1Name, string? player2Name)
         {
-            var newGame = activeGameRepository.PostNewGame();
-            if (newGame != null)
-            {
-                return Ok(activeMapper.Map<GameDTO>(newGame));
-            }
-            else return NotFound();
+            var newGame = activeGameRepository.PostNewGame(player1Name, player2Name);
+
+            return Ok(activeMapper.Map<GameDTO>(newGame));
         }
     }
 }
