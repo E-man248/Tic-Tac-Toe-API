@@ -19,18 +19,16 @@ namespace TicTacToeAPI.Data
             activeDatabaseContext = databaseContext;
         }
 
-        public Game PostNewGame(string? player1Name, string? player2Name)
+        public Game PostNewGame(string player1Name, string player2Name)
         {
             // Create players of the game and add them:
             Player newPlayer1 = new Player();
-            if (player1Name != null && player1Name.Length != 0) newPlayer1.name = player1Name;
-            else newPlayer1.name = "Player 1";
+            newPlayer1.name = player1Name;
             activeDatabaseContext.Players.Add(newPlayer1);
             activeDatabaseContext.SaveChanges();
 
             Player newPlayer2 = new Player();
-            if (player2Name != null && player2Name.Length != 0) newPlayer2.name = player2Name;
-            else newPlayer2.name = "Player 2";
+            newPlayer2.name = player2Name;
             activeDatabaseContext.Players.Add(newPlayer2);
             activeDatabaseContext.SaveChanges();
 

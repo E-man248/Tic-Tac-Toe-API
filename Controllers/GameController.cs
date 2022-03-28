@@ -24,13 +24,26 @@ namespace TicTacToeAPI.Controllers
             activeMapper = mapper;
         }
 
+        // Endpoint 1:
         // POST api/game
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public ActionResult<GameDTO> PostNewGame(string? player1Name, string? player2Name)
         {
-            var newGame = activeGameRepository.PostNewGame(player1Name, player2Name);
+            if (player1Name == null || player1Name.Length == 0)
+            {
+                player1Name = "Player 1";
+            }
+            
+            if (player2Name == null || player2Name.Length == 0)
+            {
+                player2Name = "Player 2";
+            }
 
-            return Ok(activeMapper.Map<GameDTO>(newGame));
+            var newGame = activeGameRepository.PostNewGame(player1Name, player2Name);
+            string uriResponse = "Player 1 Name : " + player1Name + "Player 2 Name : " + player2Name;
+
+            return Created(uriResponse, activeMapper.Map<GameDTO>(newGame));
         }
     }
 }
