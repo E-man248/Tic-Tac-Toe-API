@@ -15,11 +15,11 @@ namespace TicTacToeAPI.Data
             // Fill player marked board spots:
             foreach (Move m in moves)
             {
-                if (m.Player.playerID == game.player1ID)
+                if (m.playerID == game.player1ID)
                 {
                     board[m.row, m.column] = 'X';
                 }
-                else if (m.Player.playerID == game.player2ID)
+                else if (m.playerID == game.player2ID)
                 {
                     board[m.row, m.column] = 'O';
                 }

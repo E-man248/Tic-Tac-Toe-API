@@ -35,7 +35,7 @@ namespace TicTacToeAPI.Data
         }
 
         /** <summary> Inherited from Interface IGameRepository </summary> **/
-        public int PostNewMove(int row, int column, Player player, Game game, List<Move> moves)
+        public int PostNewMove(int row, int column, int playerID, Game game, List<Move> moves)
         {
             throw new NotImplementedException();
         }

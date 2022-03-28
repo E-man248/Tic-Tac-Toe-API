@@ -33,11 +33,14 @@ namespace TicTacToeAPI.Models
             Player ID Foreign Key. This is the ID of the player
             that made the move.
         </summary> **/
-        [ForeignKey("PlayerID")]
-        public Player Player { get; set; }
+        [ForeignKey("Player")]
+        [Required]
+        public int playerID  { get; set; }
+        private Player Player { get; set; }
         
         /// <summary> Game ID Foreign Key. </summary>
         [ForeignKey("GameID")]
+        [Required]
         public Game Game { get; set; }
     }
 }

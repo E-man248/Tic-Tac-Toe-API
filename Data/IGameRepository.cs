@@ -25,7 +25,7 @@ namespace TicTacToeAPI.Data
         /**<returns>
             Status code of the game after the move has been made.
         </returns>**/
-        int PostNewMove(int row, int column, Player player, Game game, List<Move> moves);
+        int PostNewMove(int row, int column, int playerID, Game game, List<Move> moves);
 
         /** <summary>
             This method save any changes to the database.
