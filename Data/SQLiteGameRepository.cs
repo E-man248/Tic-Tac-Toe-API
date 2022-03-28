@@ -19,6 +19,7 @@ namespace TicTacToeAPI.Data
             activeDatabaseContext = databaseContext;
         }
 
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
         public Game PostNewGame(string player1Name, string player2Name)
         {
             // Create players of the game and add them:
@@ -42,11 +43,38 @@ namespace TicTacToeAPI.Data
             return newGame;
         }
 
-        public Game PostNewMove(int row, int column)
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
+        public Player? GetPlayer(int playerID)
         {
-            throw new NotImplementedException();
+            return activeDatabaseContext.Players.FirstOrDefault(player => player.playerID == playerID);
         }
 
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
+        public Game? GetGame(int gameID)
+        {
+            return activeDatabaseContext.Games.FirstOrDefault(game => game.gameID == gameID);
+        }
+
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
+        public int PostNewMove(int row, int column, Player player, Game game)
+        {
+            // Create players of the game and add them:
+            Move newMove = new Move();
+            newMove.row = row;
+            newMove.column = column;
+            newMove.Player = player;
+            newMove.Game = game;
+
+            activeDatabaseContext.Moves.Add(newMove);
+            activeDatabaseContext.SaveChanges();
+
+            activeDatabaseContext.Games.Update(game);
+            activeDatabaseContext.SaveChanges();
+
+            return 0;
+        }
+
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
         public bool SaveDBChanges()
         {
             return activeDatabaseContext.SaveChanges() >= 0;

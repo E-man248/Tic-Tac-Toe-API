@@ -23,13 +23,23 @@ namespace TicTacToeAPI.Data
         ///<param name="row"> The row on the grid that the move will be placed in. </param>
         ///<param name="column"> The column on the grid that the move will be placed in. </param>
         /**<returns>
-            Newly created instance of the game that was saved.
+            Status code of the game after the move has been made.
         </returns>**/
-        Game PostNewMove(int row, int column);
+        int PostNewMove(int row, int column, Player player, Game game);
 
         /** <summary>
             This method save any changes to the database.
         </summary>**/
         bool SaveDBChanges();
+
+        /** <summary>
+            This method retrieves a player from the database.
+        </summary>**/
+        public Player? GetPlayer(int playerID);
+
+        /** <summary>
+            This method retrieves a game from the database.
+        </summary>**/
+        public Game? GetGame(int gameID);
     }
 }

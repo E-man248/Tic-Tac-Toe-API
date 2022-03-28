@@ -9,17 +9,32 @@ namespace TicTacToeAPI.Data
     </summary> **/
     public class DefaultGameRepository : IGameRepository
     {
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
+        public Game? GetGame(int gameID)
+        {
+            throw new NotImplementedException();
+        }
+
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
+        public Player? GetPlayer(int playerID)
+        {
+            throw new NotImplementedException();
+        }
+
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
         public Game PostNewGame(string player1Name, string player2Name)
         {
             int[] defaultIDs = {0, 1};
             return new Game{gameID = 0, status = 0, player1ID = defaultIDs[0], player2ID = defaultIDs[1] };
         }
 
-        public Game PostNewMove(int row, int column)
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
+        public int PostNewMove(int row, int column, Player player, Game game)
         {
             throw new NotImplementedException();
         }
 
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
         public bool SaveDBChanges()
         {
             throw new NotImplementedException();
