@@ -42,6 +42,11 @@ namespace TicTacToeAPI.Data
             return newGame;
         }
 
+        public Game PostNewMove(int row, int column)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool SaveDBChanges()
         {
             return activeDatabaseContext.SaveChanges() >= 0;
