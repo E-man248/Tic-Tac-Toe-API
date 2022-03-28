@@ -96,6 +96,7 @@ namespace TicTacToeAPI.Controllers
 
             // Move can be safely created
             int gameStatus = activeGameRepository.PostNewMove(row, column, player.playerID, game, moves);
+            moves = activeGameRepository.GetAllMoves(game.gameID);
             
             var response = new
             {

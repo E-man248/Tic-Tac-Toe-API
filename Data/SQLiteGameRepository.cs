@@ -69,6 +69,7 @@ namespace TicTacToeAPI.Data
             // Add Move to Database:
             activeDatabaseContext.Moves.Add(newMove);
             activeDatabaseContext.SaveChanges();
+            moves.Add(newMove);
 
             int gameStatus = GameLogicTracker.GetGameStatus(game, moves);
             game.status = gameStatus;
