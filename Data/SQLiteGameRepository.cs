@@ -38,6 +38,7 @@ namespace TicTacToeAPI.Data
             newGame.player1ID = newPlayer1.playerID;
             newGame.player2ID = newPlayer2.playerID;
             newGame.status = 0;
+            newGame.playerTurn = newPlayer1.playerID;
             activeDatabaseContext.Games.Add(newGame);
             activeDatabaseContext.SaveChanges();
 
@@ -71,8 +72,11 @@ namespace TicTacToeAPI.Data
             activeDatabaseContext.SaveChanges();
             moves.Add(newMove);
 
+            // Change Game Status and Player Turn:
             int gameStatus = GameLogicTracker.GetGameStatus(game, moves);
             game.status = gameStatus;
+            if (game.playerTurn == game.player1ID) game.playerTurn = game.player2ID;
+            else game.playerTurn = game.player1ID;
 
             // Update the Game the Move took place in:
             activeDatabaseContext.Games.Update(game);

@@ -54,5 +54,13 @@ namespace TicTacToeAPI.DataTransferObjects
         </summary> **/
         [Required]
         public int player2ID { get; set; }
+
+        
+        /** <summary>
+            The player ID of the player whose turn it is to play.
+        </summary> **/
+
+        [Required]
+        public int playerTurn { get; set; }
     }
 }
