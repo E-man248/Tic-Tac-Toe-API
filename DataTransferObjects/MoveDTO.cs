@@ -12,10 +12,16 @@ namespace TicTacToeAPI.Models
     public class MoveDTO
     {
         /** <summary>
-            Move Position on the Tic-Tac-Toe Grid. Ex: A1
+            Row Position on the Tic-Tac-Toe Grid.
         </summary> **/
         [Key]
-        public string movePosition { get; set; } = "";
+        public int row { get; set; }
+        
+        /** <summary>
+            Column Position on the Tic-Tac-Toe Grid.
+        </summary> **/
+        [Key]
+        public int column { get; set; }
 
         /** <summary>
             Player ID Foreign Key. This is the ID of the player
