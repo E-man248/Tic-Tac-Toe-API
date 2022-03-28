@@ -10,6 +10,12 @@ namespace TicTacToeAPI.Data
     public class DefaultGameRepository : IGameRepository
     {
         /** <summary> Inherited from Interface IGameRepository </summary> **/
+        public List<Game> GetAllActiveGames()
+        {
+            throw new NotImplementedException();
+        }
+
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
         public List<Move> GetAllMoves(int gameID)
         {
             throw new NotImplementedException();

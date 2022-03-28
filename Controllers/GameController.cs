@@ -46,7 +46,6 @@ namespace TicTacToeAPI.Controllers
 
             return Created(uriResponse, activeMapper.Map<GameDTO>(newGame));
         }
-
         
         // Endpoint 2:
         // POST api/game/{gameID}/move
@@ -81,12 +80,11 @@ namespace TicTacToeAPI.Controllers
             // If the game is already over, throw an error:
             if (game.status != 0)
             {
-                
-            string errorGameStatusMessage = "Game Still In Progress...";
+                string errorGameStatusMessage = "Game Still In Progress...";
 
-            if (game.status == 1) errorGameStatusMessage = "Player 1 Wins!";
-            else if (game.status == 2) errorGameStatusMessage = "Player 2 Wins!";
-            else if (game.status == 3) errorGameStatusMessage = "Game was a Draw!";
+                if (game.status == 1) errorGameStatusMessage = "Player 1 Wins!";
+                else if (game.status == 2) errorGameStatusMessage = "Player 2 Wins!";
+                else if (game.status == 3) errorGameStatusMessage = "Game was a Draw!";
 
                 var invalidStatusResponse = new
                 {
@@ -131,10 +129,11 @@ namespace TicTacToeAPI.Controllers
             int gameStatus = activeGameRepository.PostNewMove(row, column, player.playerID, game, moves);
             moves = activeGameRepository.GetAllMoves(game.gameID);
 
-            string gameStatusMessage = "Game was a Draw!";
+            string gameStatusMessage = "Game Still In Progress...";
 
-            if (gameStatus == 1) gameStatusMessage = "Player 1 Won!";
-            else if (gameStatus == 2) gameStatusMessage = "Player 2 Won!";
+            if (game.status == 1) gameStatusMessage = "Player 1 Wins!";
+            else if (game.status == 2) gameStatusMessage = "Player 2 Wins!";
+            else if (game.status == 3) gameStatusMessage = "Game was a Draw!";
             
             var response = new
             {
@@ -149,7 +148,53 @@ namespace TicTacToeAPI.Controllers
             return Created("Move Created", response);
         }
 
-        // Endpoint 4: (Helper Endpoint) 
+        // This helper class stores information about games including their
+        // game model, number of moves, and their players' names.
+        public class GameInfo
+        {
+            public Game Game { get; set; }
+            public int NumberOfMoves { get; set; }
+            public string Player1Name  { get; set; }
+            public string Player2Name { get; set; }
+            public string GameRow0 { get; set; }
+            public string GameRow1 { get; set; }
+            public string GameRow2 { get; set; }
+        }
+
+        // Endpoint 3: 
+        // GET api/game
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<List<GameInfo>> GetAllActiveGames()
+        {
+            // Retrieve all active games from the database:
+            List<Game> games = activeGameRepository.GetAllActiveGames();
+
+            List<GameInfo> gameInfoList = new List<GameInfo>();
+
+            foreach (Game game in games) 
+            {
+                // Store game information:
+                GameInfo gameInfo = new GameInfo();
+                List<Move> moves = activeGameRepository.GetAllMoves(game.gameID);
+
+                gameInfo.Game = game;
+                gameInfo.Player1Name = activeGameRepository.GetPlayer(game.player1ID).name;
+                gameInfo.Player2Name = activeGameRepository.GetPlayer(game.player2ID).name;
+                gameInfo.NumberOfMoves = moves.Count;
+                gameInfo.GameRow0 = GameLogicTracker.printBoardRow0(game, moves);
+                gameInfo.GameRow1 = GameLogicTracker.printBoardRow1(game, moves);
+                gameInfo.GameRow2 = GameLogicTracker.printBoardRow2(game, moves);
+
+
+                gameInfoList.Add(gameInfo);
+            }
+
+            return Ok(gameInfoList);
+        }
+
+        // Endpoint 4: 
         // GET api/game/{gameID}/move
         [HttpGet("{gameID}/move")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -169,7 +214,7 @@ namespace TicTacToeAPI.Controllers
             return Ok(activeMapper.Map<List<MoveDTO>>(moves));
         }
 
-        // Endpoint 5: (Helper Endpoint)
+        // Endpoint 5:
         // GET api/game/player/{playerID}
         [HttpGet("player/{playerID}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
