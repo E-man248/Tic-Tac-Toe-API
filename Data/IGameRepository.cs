@@ -46,5 +46,10 @@ namespace TicTacToeAPI.Data
             This method retrieves all the moves that take place in a game from the database.
         </summary>**/
         List<Move> GetAllMoves(int gameID);
+
+        /** <summary>
+            This method retrieves all the games are currently taking place in the database.
+        </summary>**/
+        public List<Game> GetAllActiveGames();
     }
 }

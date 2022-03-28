@@ -96,5 +96,11 @@ namespace TicTacToeAPI.Data
         {
             return activeDatabaseContext.Moves.Where(move => move.Game.gameID == gameID).ToList();
         }
+
+        /** <summary> Inherited from Interface IGameRepository </summary> **/
+        public List<Game> GetAllActiveGames()
+        {
+            return activeDatabaseContext.Games.Where(game => game.status == 0).ToList();
+        }
     }
 }
