@@ -27,16 +27,16 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<GameDatabaseContext, GameDatabaseContext>();
 builder.Services.AddScoped<IGameRepository, SQLiteGameRepository>();
 
-var app = builder.Build();
-
 /*  
  *  This configuration sets up the sqlite database connection with the project
 */
-IConfiguration Configuration = app.Configuration;
-IWebHostEnvironment environment = app.Environment;
+IConfiguration Configuration = builder.Configuration;
+IWebHostEnvironment environment = builder.Environment;
 
-builder.Services.AddEntityFrameworkSqlite().AddDbContext<GameDatabaseContext>(options =>
+builder.Services.AddDbContext<GameDatabaseContext>(options =>
 options.UseSqlite(Configuration.GetConnectionString("TicTacToeDBConnection")));
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

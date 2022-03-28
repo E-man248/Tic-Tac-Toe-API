@@ -12,6 +12,7 @@ namespace TicTacToeAPI.DataTransferObjects
     public class GameDTO
     {
         /// <summary> Unique player ID. </summary>
+        [Key]
         public int gameID { get; set; }
 
         /** <summary>
@@ -34,16 +35,19 @@ namespace TicTacToeAPI.DataTransferObjects
                 </item>
             </list>
         </summary> **/
+        [Required]
         public int status { get; set; }
 
         /** <summary>
             The unique player ID of the player assigned Player 1 in the game.
         </summary> **/
+        [Required]
         public int player1ID { get; set; }
 
         /** <summary>
             The unique player ID of the player assigned Player 2 in the game.
         </summary> **/
+        [Required]
         public int player2ID { get; set; }
     }
 }
