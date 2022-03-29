@@ -136,3 +136,12 @@ None
     }
 ]
 ```
+## Final Question
+
+Using an appropriate OAuth 2.0 Grant Type is essential to securing Web Applications. OAuth 2.0 defines several grant types such as Authorization Code Grant, Implicit Grant, Refresh Token Grant, Proof Key for Code Exchange (PKCE), etc.<br />
+
+If OAuth 2.0 is used without an appropriate Grant Type the application source code could be exposed to the browser which can potentially create a security risk. For Single Web Applications (SPA), the PKCE grant type can be used. The client application needs to prove to the authorization server that the authorization code is authentic before an access token is granted.<br />
+
+Basically, with PKCE flow, when the Client sends the request 'code_challenge' with a 'code_challenge_method', an authorization code is sent back to the Client. The Client then sends a 'code_verifier' which will be validated by the Authorization Server before the access token is granted.<br />
+
+To improve user experience, Refresh Tokens Grant can be implemented to provide a way to refresh the access token when it expires. This will eliminate user intervention when the token expires.<br />
