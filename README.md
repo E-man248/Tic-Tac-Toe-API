@@ -1,7 +1,9 @@
+## Author
+Emmanuel Omari-Osei
+
 ## Description
 
 This app was developed for the LaunchPad Vog App Developer's Code Challenge. This application is a .NET 6.0 Web API that manages Tic-Tac-Toe games with the use of three client-accessible endpoints. The endpoints and their functionality can be found in the documentation below.
-
 
 ## Install and Run
 
@@ -38,7 +40,7 @@ The API has been configured to host and listen on http://localhost:5000. Please 
 
 Since Postman was used during the development of this program, it is suggested to use the Postman platform to perform endpoint connections, however, this is not mandatory. 
 
-## Endpoint 1
+### Endpoint 1
 The client can start and create new games with an expected response, including the game's unique game ID and the player IDs of the two players partaking in that game.
 This endpoint takes in the parameters of the names of the two players starting that game.
 
@@ -51,7 +53,18 @@ http://localhost:5000/game
 player1Name (ex: player1Name="Jack"),<br />
 player2Name (ex: player2Name="Jill")
 
-## Endpoint 2
+#### Example Success Response:
+```
+{
+    "gameID": 25,
+    "status": 0,
+    "player1ID": 15,
+    "player2ID": 16,
+    "playerTurn": 15
+}
+```
+
+### Endpoint 2
 The client can register moves for a player partaking in a game and receive information on the game's current progress. Appropriate errors are returned given invalid input. This endpoint takes in the parameters gameID.
 
 *Method:* POST
@@ -65,7 +78,19 @@ row (ex: row=0)
 column (ex: column=1)
 playerID (ex: playerID=5)
 
-## Endpoint 3
+#### Example Success Response
+```
+{
+    "moveInfo": "New Move at (1,1) registered for Player 1 in Game #23",
+    "board_Row0": "|O|*|*|",
+    "board_Row1": "|*|X|*|",
+    "board_Row2": "|*|*|X|",
+    "gameStatus": "Game Still In Progress...",
+    "nextTurn": 12
+}
+```
+
+### Endpoint 3
 The client can retrieve a list of the currently active Tic-Tac-Toe games taking place. Clients can also see information, such as the number of moves made in each active game and the players playing in those games.
 
 *Method:* GET
@@ -75,3 +100,39 @@ http://localhost:5000/game
 
 *URL Parameters:*
 None
+
+#### Example Success Response
+```
+[
+    {
+        "game": {
+            "gameID": 23,
+            "status": 0,
+            "player1ID": 11,
+            "player2ID": 12,
+            "playerTurn": 11
+        },
+        "numberOfMoves": 2,
+        "player1Name": "Player 1",
+        "player2Name": "Player 2",
+        "gameRow0": "|O|*|*|",
+        "gameRow1": "|*|*|*|",
+        "gameRow2": "|*|*|X|"
+    },
+    {
+        "game": {
+            "gameID": 24,
+            "status": 0,
+            "player1ID": 13,
+            "player2ID": 14,
+            "playerTurn": 13
+        },
+        "numberOfMoves": 2,
+        "player1Name": "Jacob",
+        "player2Name": "Yasmin",
+        "gameRow0": "|*|X|*|",
+        "gameRow1": "|*|*|*|",
+        "gameRow2": "|*|*|O|"
+    }
+]
+```
