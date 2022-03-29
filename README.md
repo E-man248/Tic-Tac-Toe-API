@@ -89,6 +89,58 @@ playerID (ex: playerID=5)
     "nextTurn": 12
 }
 ```
+#### Example Fail Response
+Attempted to make a move in a completed game.
+```
+{
+    "error": "This game has already been completed!",
+    "board_Row0": "|X|O|X|",
+    "board_Row1": "|O|X|O|",
+    "board_Row2": "|O|X|X|",
+    "gameStatus": "Player 1 Wins!"
+}
+```
+
+#### Example Fail Response
+Attempted to make a move in a completed game.
+```
+{
+    "error": "This game has already been completed!",
+    "board_Row0": "|X|O|X|",
+    "board_Row1": "|O|X|O|",
+    "board_Row2": "|O|X|X|",
+    "gameStatus": "Player 1 Wins!"
+}
+```
+
+#### Example Fail Response
+Move made in a spot already taken.
+```
+ERROR: Move Position already taken!
+```
+
+
+#### Example Fail Response
+Player whose turn is over attempts to play a second time.
+```
+{
+    "error": "It is not this player's turn!",
+    "nextTurn": "Player 1",
+    "playerID": 11
+}
+```
+
+#### Example Fail Response
+Invalid game id.
+```
+ERROR: Game ID is INVALID!
+```
+
+#### Example Fail Response
+Invalid player id.
+```
+ERROR: Player ID is INVALID!
+```
 
 ### Endpoint 3
 The client can retrieve a list of the currently active Tic-Tac-Toe games taking place. Clients can also see information, such as the number of moves made in each active game and the players playing in those games.
