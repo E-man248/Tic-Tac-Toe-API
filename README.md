@@ -3,7 +3,7 @@
 This app was developed for the LaunchPad Vog App Developer's Code Challenge. This application is a .NET 6.0 Web API that manages Tic-Tac-Toe games with the use of three client-accessible endpoints. The endpoints and their functionality can be found in the documentation below.
 
 
-## Installation and Run
+## Install and Run
 
 1. Download/Clone the repository onto your development computer.
 2. Ensure Docker Compose is installed on the development computer you use to run this project.
@@ -12,19 +12,24 @@ This app was developed for the LaunchPad Vog App Developer's Code Challenge. Thi
 	docker-compose build
 	docker-compose up
 	
-## Alternative Installation and Run
+## Alternate Install and Run
 
 *This installation method should be used in the case that the development computer cannot run the Dockerfile configuration or cannot install Docker Compose*
 
 1. Download/Clone the repository onto your development computer.
 2. Unzip the Source File Folder
 3. Ensure the .NET 6.0 SDK is installed
-4. Install the following packages:
-* 
-5. Run the following commands inside the unzipped source file folder:
-
-	dotnet run
-	docker-compose up
+5. Install the following dotnet packages using:
+`dotnet add package <PackageName>`
+* AutoMapper Version 10.1.1
+* AutoMapper.Extensions.Microsoft.DependencyInjection Version 8.1.1
+* Microsoft.EntityFrameworkCore Version 6.0.3
+* Microsoft.EntityFrameworkCore.Design Version 6.0.3
+* Microsoft.EntityFrameworkCore.Sqlite Version 6.0.3
+* Microsoft.Extensions.Configuration Version 6.0.1
+* Swashbuckle.AspNetCore Version 6.2.3
+* System.Data.SQLite.Core Version 1.0.115.5
+5. Run the following command inside the unzipped source file folder: `dotnet run`
 
 ## IMPORTANT NOTE
 
