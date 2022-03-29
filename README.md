@@ -1,6 +1,6 @@
 ## Description
 
-This app was developed for the Launch Pad Vog App Developer's Code Challenge. This application is a .NET 6.0 Web API that manages Tic-Tac-Toe games with the use of three client accessible endpoints. The endpoints and their functionality can be found in the documentation below.
+This app was developed for the LaunchPad Vog App Developer's Code Challenge. This application is a .NET 6.0 Web API that manages Tic-Tac-Toe games with the use of three client-accessible endpoints. The endpoints and their functionality can be found in the documentation below.
 
 
 ## Installation and Run
@@ -14,7 +14,7 @@ This app was developed for the Launch Pad Vog App Developer's Code Challenge. Th
 	
 ## Alternative Installation and Run
 
-*This installation method should be used in the case that development computer cannot run the Dockerfile configuration or cannot install Docker Compose*
+*This installation method should be used in the case that the development computer cannot run the Dockerfile configuration or cannot install Docker Compose*
 
 1. Download/Clone the repository onto your development computer.
 2. Unzip the Source File Folder
@@ -32,7 +32,7 @@ The API has been configured to host and listen on http://localhost:5000. Please 
 
 ## API Endpoints
 
-Since Postman was used during the development of this program, it is suggested to use the Postman platform to perform endpoint connections, however, this is not manditory. 
+Since Postman was used during the development of this program, it is suggested to use the Postman platform to perform endpoint connections, however, this is not mandatory. 
 
 ## Endpoint 1
 The client can start and create new games with an expected response, including the game's unique game ID and the player IDs of the two players partaking in that game.
