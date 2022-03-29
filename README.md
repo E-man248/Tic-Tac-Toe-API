@@ -7,10 +7,9 @@ This app was developed for the LaunchPad Vog App Developer's Code Challenge. Thi
 
 1. Download/Clone the repository onto your development computer.
 2. Ensure Docker Compose is installed on the development computer you use to run this project.
-3. Run the following commands to build and run the docker container:
-
-	docker-compose build
-	docker-compose up
+3. Run the following commands to build and run the docker container:<br />
+`docker-compose build`<br />
+`docker-compose up`<br />
 	
 ## Alternate Install and Run
 
@@ -49,7 +48,8 @@ This endpoint takes in the parameters of the names of the two players starting t
 http://localhost:5000/game
 
 *URL Parameters:*
-player1Name (ex: player1Name="Jack"), player2Name (ex: player2Name="Jack")
+player1Name (ex: player1Name="Jack"),<br />
+player2Name (ex: player2Name="Jill")
 
 ## Endpoint 2
 The client can register moves for a player partaking in a game and receive information on the game's current progress. Appropriate errors are returned given invalid input. This endpoint takes in the parameters gameID.
@@ -57,12 +57,21 @@ The client can register moves for a player partaking in a game and receive infor
 *Method:* POST
 
 *URL:*
-http://localhost:5000/game/{gameid}/move
+http://localhost:5000/game/{gameID}/move
 
 *URL Parameters:*
-player1Name (ex: player1Name="Jack"), player2Name (ex: player2Name="Jack")
+gameID (Included in Head URL) (ex: 19)<br />
+row (ex: row=0)
+column (ex: column=1)
+playerID (ex: playerID=5)
 
 ## Endpoint 3
 The client can retrieve a list of the currently active Tic-Tac-Toe games taking place. Clients can also see information, such as the number of moves made in each active game and the players playing in those games.
 
-##
+*Method:* GET
+
+*URL:*
+http://localhost:5000/game
+
+*URL Parameters:*
+None
