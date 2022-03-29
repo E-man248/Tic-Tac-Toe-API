@@ -1,0 +1,23 @@
+Description
+
+This app was developed for the Launch Pad Vog App Developer's Code Challenge. This application is a .NET 6.0 Web API that manages Tic-Tac-Toe games with the use of three client accessible endpoints. The endpoints and their functionality can be found in the documentation below.
+
+
+Installation
+
+1. Download/Clone the repository onto your development computer.
+2. Ensure Docker Compose is installed on the development computer you use to run this project.
+3. Run the following commands to build and run the docker container:
+
+	docker-compose build
+	docker-compose up
+
+IMPORTANT NOTE
+
+The API has been configured to host and listen on http://localhost:5000. Please ensure that all requests are sent to this address with their associated routes following.
+
+API Endpoints
+
+Since Postman was used during the development of this program, it is suggested to use the Postman platform to perform endpoint connections, however, this is not manditory. 
+
+Endpoint 1
