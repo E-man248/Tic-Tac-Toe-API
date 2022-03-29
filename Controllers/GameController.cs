@@ -1,6 +1,5 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
 using TicTacToeAPI.Data;
 using TicTacToeAPI.DataTransferObjects;
 using TicTacToeAPI.Models;
